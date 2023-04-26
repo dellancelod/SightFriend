@@ -41,6 +41,12 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
+//Configure Authorization policy for admin area
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
