@@ -2,12 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SightFriend.Data;
 using SightFriend.Data.Repo;
+using SightFriend.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
 //Add services
 builder.Services.AddTransient<INewsItemsRepository, EFNewsItemRepository>();
@@ -45,6 +43,12 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddAuthorization(x =>
 {
     x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
+});
+
+// Add services to the container.
+builder.Services.AddControllersWithViews(x =>
+{
+    x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
 });
 
 var app = builder.Build();
