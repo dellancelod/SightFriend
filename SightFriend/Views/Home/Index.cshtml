@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <audio id="voiceover">
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+    <div class="grid2x2">
+        <div class="grid-row">
+            <div id="radio" class="grid-column rounded concentrate green"></div>
+            <div id="login" class="grid-column rounded concentrate red"></div>
+        </div>
+        <div class="grid-row">
+            <div id="info" class="grid-column rounded concentrate blue"></div>
+            <div id="colorblind" class="grid-column rounded concentrate green"></div>
+        </div>
+    </div>
+    
+</div>
+
+@section Scripts{
+
+
+    <script>
+        $('#radio').load("/Home/RadioPartial")
+        $('#login').load("/Home/LoginPartial")
+        $('#info').load("/Home/InfoPartial")
+        $('#colorblind').load("/Home/ColorBlindPartial")
+
+        
+
+        var radioElement = document.getElementById('radio'),
+            loginElement = document.getElementById('login'),
+            infoElement = document.getElementById('info'),
+            colorblindElement = document.getElementById('colorblind');
+
+        var voice = document.getElementById('voiceover');
+
+        //function playAudio(audio) {
+        //    return new Promise(res => {
+        //        audio.play()
+        //        audio.onended = res
+        //    })
+        //}
+
+        infoElement.addEventListener('click', function(){
+            voice.src = "/voicelines/extended-info.mp3";
+            voice.play()
+        });
+
+        //radioElement.addEventListener('mouseenter', async function () {
+        //    await playAudio(new Audio("/voicelines/radio.mp3"))
+        //}, false);
+
+
+        //loginElement.addEventListener('mouseenter', async function () {
+        //    await playAudio(new Audio('/voicelines/login.mp3'))
+        //}, false);
+
+        //infoElement.addEventListener('mouseenter', async function () {
+
+        //    await playAudio(new Audio("/voicelines/info.mp3"))
+        //}, false);
+
+        //colorblindElement.addEventListener('mouseenter', async function () {
+
+        //    await playAudio(new Audio("/voicelines/colorblind.mp3"))
+        //}, false);
+
+        //radio.addEventListener('mouseleave', function () {
+        //    console.log('leave')
+        //    voice.pause();
+        //    voice.currentTime = 0;
+        //}, false);
+        //login.addEventListener('mouseleave', function () {
+        //    console.log('leave')
+        //    voice.pause();
+        //    voice.currentTime = 0;
+        //}, false);
+        //info.addEventListener('mouseleave', function () {
+        //    console.log('leave')
+        //    voice.pause();
+        //    voice.currentTime = 0;
+        //}, false);
+        //colorblind.addEventListener('mouseleave', function () {
+        //    console.log('leave')
+        //    voice.pause();
+        //    voice.currentTime = 0;
+        //}, false);
+    </script>
+}

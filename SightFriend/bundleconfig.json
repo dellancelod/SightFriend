@@ -1,0 +1,19 @@
+[
+  {
+    "outputFileName": "wwwroot/js/scripts.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "wwwroot/js/site.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/styles.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/css/site.css",
+      "wwwroot/SightFriend.styles.css",
+      "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    ]
+  }
+]

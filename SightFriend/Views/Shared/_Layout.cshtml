@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body>
+    <div class="container">
+        @*<div id="slider">
+        </div>*@
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    @await Html.PartialAsync("ScriptsPartial")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
