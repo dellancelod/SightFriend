@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SightFriend.Data;
+using SightFriend.Data.Repo;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//Add services
+builder.Services.AddTransient<INewsItemsRepository, EFNewsItemRepository>();
+builder.Services.AddTransient<DataManager>();
+
+//Connect BD context
 builder.Services.AddDbContextPool<AppDbContext>(options => options
         .UseMySql(
             builder.Configuration.GetConnectionString("MariaDbConnectionString"),
             new MariaDbServerVersion(new Version(10, 5, 4))
         )
     );
+
 
 var app = builder.Build();
 
