@@ -2,15 +2,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SightFriend.Models;
+using SightFriend.Services;
 
 namespace SightFriend.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly CustomUserManager userManager;
         private readonly SignInManager<IdentityUser> signInManager;
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(CustomUserManager userManager, SignInManager<IdentityUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -33,9 +34,21 @@ namespace SightFriend.Controllers
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, model.Password, true);
+                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
+                    if (result.Succeeded)
+                    {
+                        return Redirect(returnUrl ?? "/");
+                    }
                 }
+                ModelState.AddModelError(nameof(LoginViewModel.PhoneNumber), "Невірний номер телефону або пароль");
             }
+            return View(model);
+        }
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
