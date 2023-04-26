@@ -27,7 +27,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
-}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+}).AddEntityFrameworkStores<AppDbContext>()
+.AddUserManager<CustomUserManager>()
+.AddDefaultTokenProviders();
 
 //Authentication cookies
 builder.Services.ConfigureApplicationCookie(options =>
