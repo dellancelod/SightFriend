@@ -58,6 +58,12 @@ namespace SightFriend.Data
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "danilsv"),
                 SecurityStamp = string.Empty
             });
+
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = "1",
+                UserId = "b9dacebc-402e-48df-8d60-dae005eece05"
+            });
         }
     }
 }
