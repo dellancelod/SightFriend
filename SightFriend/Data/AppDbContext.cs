@@ -53,7 +53,7 @@ namespace SightFriend.Data
                 Id = "b9dacebc-402e-48df-8d60-dae005eece05",
                 UserName = "Даніл Світайло",
                 NormalizedUserName = "ДАНІЛ СВІТАЙЛО",
-                PhoneNumber = "+380955880395",
+                PhoneNumber = "0955880395",
                 PhoneNumberConfirmed = true,
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "danilsv"),
                 SecurityStamp = string.Empty
