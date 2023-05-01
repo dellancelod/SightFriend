@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="bundleconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +43,32 @@
 
   <ItemGroup>
     <None Include="bundleconfig.json" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\.gitignore" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\.jshintrc" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\.ruby-version" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\.travis.yml" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\CHANGELOG.md" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\CONTRIBUTING.md" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\deploy.rb" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\dist\jquery.mask.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\dist\jquery.mask.min.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\docker-compose.yml" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\Dockerfile" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\Gruntfile.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\LICENSE" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\package.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\README.md" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\jquery.mask.test.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\qunit.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\sinon-1.10.3.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\sinon-qunit-1.0.0.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\sinon-qunit.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\zepto\data.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\zepto\event.js" />
+    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\zepto\zepto.min.js" />
   </ItemGroup>
 
 </Project>

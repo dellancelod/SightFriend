@@ -1,0 +1,22 @@
+﻿@model LoginViewModel
+<div>
+    <h1>Логін</h1>
+    <div>
+        <form asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber"/>
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <input type="submit" value="Войти"/>
+            </div>
+        </form>
+    </div>
+</div>
