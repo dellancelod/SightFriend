@@ -8,12 +8,10 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
-    <Content Remove="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="bundleconfig.json" />
-    <_ContentIncludedByDefault Remove="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,7 +55,6 @@
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\package.js" />
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\README.md" />
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.js" />
-    <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\src\jquery.mask.min.js" />
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\jquery.mask.test.js" />
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\qunit.js" />
     <None Include="wwwroot\lib\jQuery-Mask-Plugin-master\test\sinon-1.10.3.js" />
