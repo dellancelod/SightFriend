@@ -4,7 +4,8 @@
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.min.js",
       "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
-      "wwwroot/js/site.js"
+      "wwwroot/js/site.js",
+      "wwwroot/lib/jQuery-Mask-Plugin-master/src/jquery.mask.min.js"
     ]
   },
   {
@@ -14,6 +15,12 @@
       "wwwroot/css/site.css",
       "wwwroot/SightFriend.styles.css",
       "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/jQuery-Mask-Plugin-master/src/jquery.mask.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jQuery-Mask-Plugin-master/src/jquery.mask.js"
     ]
   }
 ]
