@@ -104,14 +104,31 @@ body {
     bottom: 1%;
     right: 1%;
     left: 1%;
-    margin-bottom: 0px;
     font-size: 60px;
     margin: 0px;
-    display: flex;
+    display: grid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    justify-content: center;
+}
+.login-row {
+    display: flex;
+}
+
+.login-column {
+    display: flex;
+    padding: 1%;
+    justify-content: left;
     align-items: center;
     flex: 1;
+}
+.login-column input {
+    width:90%;
+}
+.login-button {
+    border: none;
+    margin: 1%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
 
@@ -137,13 +154,23 @@ body {
     }
 }
 
-@media only screen and (max-width: 700px){
-    .grid-row{
+@media only screen and (max-width: 700px) {
+    .grid-row {
         flex-wrap: wrap;
     }
-    .grid-column{ 
+
+    .grid-column {
         flex-basis: 100%;
     }
+
+    .login-row {
+        flex-wrap: wrap;
+    }
+
+    .login-column {
+        flex-basis: 100%;
+    }
+
 }
 
 .admin-divbox{

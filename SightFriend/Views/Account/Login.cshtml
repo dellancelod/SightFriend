@@ -1,22 +1,25 @@
 ﻿@model LoginViewModel
-<div class="login-form red rounded">
-    <h1>Логін</h1>
-    <div>
-        <form asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
-            <div asp-validation-summary="All"></div>
-            <div>
-                <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber" id="phone-num-field"/>
-                <span asp-validation-for="PhoneNumber"></span>
+<div >
+    <form class="login-form red rounded" asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            <div class="login-row">
+                <div class="login-column">
+                    <label asp-for="PhoneNumber"></label>
+                </div>
+                <div class="login-column">
+                    <input asp-for="PhoneNumber" id="phone-num-field" />
+                </div>
             </div>
-            <div>
-                <label asp-for="Password"></label>
-                <input asp-for="Password"/>
-                <span asp-validation-for="Password"></span>
+            <div class="login-row">
+                <div class="login-column">
+                    <label asp-for="Password"></label>
+                </div>
+                <div class="login-column">
+                    <input asp-for="Password"/>
+                </div>
             </div>
-            <div>
-                <input type="submit" value="Войти"/>
+            <div class="login-row">
+                <input class="login-button blue rounded" type="submit" value="Увійти" />
+                <div asp-validation-summary="All"></div>
             </div>
         </form>
-    </div>
 </div>
