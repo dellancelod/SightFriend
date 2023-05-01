@@ -1,15 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IQueryable<News>
 @{
-    Layout = null;
+    string strTitle = "Панель Адміністратора";
+    ViewBag.Title = strTitle;
 }
 
-<!DOCTYPE html>
+<div>
+    <h1>@strTitle</h1>
+    <div>
+        <h3>Новини</h3>
+        <div class="admin-divbox">
+            <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="">додати новину</a>
+            @if (Model.Any())
+            {
+                <div>
+                    @foreach (News entity in Model)
+                    {
+                        <div>
+                            <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
+                            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="NewsItems" asp-action="Delete">
+                                <input type="hidden" name="id" value="@entity.Id">
+                                <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">видалити</a>
+                            </form>
 
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width"/>
-        <title>Index</title>
-    </head>
-</html>
+                            <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
+                                @($"{entity.Title}")
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="admin-divbox">
+            <form asp-area="" asp-controller="Account" asp-acton="Logout" method="post">
+                <input type="submit" value="Вийти"/>
+            </form>
+        </div>
+    </div>
+</div>
