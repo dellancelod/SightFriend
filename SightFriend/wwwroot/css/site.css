@@ -128,3 +128,15 @@ body {
         flex-basis: 100%;
     }
 }
+
+.admin-divbox{
+    padding: 15px 0;
+}
+
+.admin-divbox label {
+    display: block;
+}
+
+.admin-divbox a{
+    display: block;
+}
