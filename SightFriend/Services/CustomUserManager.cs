@@ -28,7 +28,15 @@ namespace SightFriend.Services
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
-            return Users.FirstOrDefaultAsync(u => u.PhoneNumber == PhoneNumber, cancellationToken);
+
+            string phoneNumber = "";
+            for (int i = 3; i < PhoneNumber.Length; i++)
+            {
+                if (Char.IsDigit(PhoneNumber[i]))
+                phoneNumber += PhoneNumber[i];
+            }
+
+            return Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber, cancellationToken);
         }
     }
 }
