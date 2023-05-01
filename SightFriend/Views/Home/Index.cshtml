@@ -9,7 +9,9 @@
     </audio>
     <div class="grid2x2">
         <div class="grid-row">
-            <div id="login" class="grid-column rounded concentrate red">Логін</div>
+            <div id="login" style="cursor: pointer;" class="grid-column rounded concentrate red" onclick="window.location='/Account/Login';">
+                Логін
+                </div>
             <div id="radio" class="grid-column rounded concentrate green"></div>
         </div>
         <div class="grid-row">
@@ -46,6 +48,7 @@
             voice.src = "/voicelines/extended-info.mp3";
             voice.play()
         });
+
 
         //radioElement.addEventListener('mouseenter', async function () {
         //    await playAudio(new Audio("/voicelines/radio.mp3"))
