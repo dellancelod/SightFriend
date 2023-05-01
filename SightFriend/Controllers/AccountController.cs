@@ -18,7 +18,7 @@ namespace SightFriend.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login(string? returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
             return View(new LoginViewModel());
@@ -26,7 +26,7 @@ namespace SightFriend.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
