@@ -6,7 +6,7 @@ namespace SightFriend.Models
     {
         public string Title { get; set; }
         [Display(Name = "Опис")]
-        public string Subitle { get; set; }
+        public string Subtitle { get; set; }
         [Display(Name = "Зміст")]
         public string Text { get; set; }
 
