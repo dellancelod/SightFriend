@@ -10,6 +10,7 @@
         <h3>Новини</h3>
         <div class="admin-divbox">
             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="">додати новину</a>
+            <div>
             @if (Model.Any())
             {
                 <div>
@@ -29,6 +30,7 @@
                     }
                 </div>
             }
+            </div>
         </div>
         <div class="admin-divbox">
             <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
