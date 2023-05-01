@@ -1,0 +1,41 @@
+﻿@model News
+@{
+    string strTitle = "Редагувати новину";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="DateAdded" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="admin-divbox">
+                <label asp-for="Title"></label>
+                <input asp-for="Title"/>
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="admin-divbox">
+                <label asp-for="Subtitle"></label>
+                <input asp-for="Subtitle" />
+                <span asp-validation-for="Subtitle"></span>
+            </div>
+            <div class="admin-divbox">
+                <label asp-for="Text"></label>
+                <input asp-for="Text" />
+                <span asp-validation-for="Text"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    window.onload=function(){
+        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Text)');
+        newCKEdit.updateElement();
+    }
+</script>
