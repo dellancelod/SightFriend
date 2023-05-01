@@ -1,10 +1,10 @@
 html {
-    font-size: 60px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
     html {
-        font-size: 62px;
+        font-size: 16px;
     }
 }
 
@@ -60,6 +60,7 @@ body {
     bottom:1%;
     right:1%;
     left:1%;
+    font-size: 60px;
     margin-bottom: 0px;
     margin:0px;
     display: grid;
@@ -96,6 +97,23 @@ body {
     animation: blink 3s infinite;
 }
 
+/* Login Form */
+.login-form {
+    position: absolute;
+    top: 1%;
+    bottom: 1%;
+    right: 1%;
+    left: 1%;
+    margin-bottom: 0px;
+    font-size: 60px;
+    margin: 0px;
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
 
 /*  Animations  */
 @keyframes blink {
@@ -123,7 +141,7 @@ body {
     .grid-row{
         flex-wrap: wrap;
     }
-    .grid-column{
+    .grid-column{ 
         flex-basis: 100%;
     }
 }
