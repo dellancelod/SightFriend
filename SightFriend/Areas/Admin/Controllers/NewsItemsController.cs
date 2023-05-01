@@ -9,7 +9,7 @@ namespace SightFriend.Areas.Admin.Controllers
     public class NewsItemsController : Controller
     {
         private readonly DataManager dataManager;
-        public NewsItemsController(DataManager dataManager, IWebHostEnvironment hostEnvironment)
+        public NewsItemsController(DataManager dataManager)
         {
             this.dataManager = dataManager;
         }
