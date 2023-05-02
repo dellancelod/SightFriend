@@ -8,7 +8,7 @@
     <h1>@strTitle</h1>
     <div>
         <h3>Новини</h3>
-        <div class="admin-divbox">
+        <div>
             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="">додати новину</a>
             <div>
             @if (Model.Any())
@@ -17,22 +17,21 @@
                     @foreach (News entity in Model)
                     {
                         <div>
+                            <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
+                                @($"{entity.Title}")
+                            </a>
                             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
                             <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="NewsItems" asp-action="Delete">
                                 <input type="hidden" name="id" value="@entity.Id">
                                 <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">видалити</a>
                             </form>
-
-                            <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
-                                @($"{entity.Title}")
-                            </a>
                         </div>
                     }
                 </div>
             }
             </div>
         </div>
-        <div class="admin-divbox">
+        <div>
             <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
                 <input type="submit" value="Вийти"/>
             </form>
