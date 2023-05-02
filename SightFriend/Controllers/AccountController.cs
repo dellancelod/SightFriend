@@ -50,5 +50,15 @@ namespace SightFriend.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult Index()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Redirect("Login");
+            }
+
+            ViewBag.Username = HttpContext.User.Identity.Name;
+            return View();
+        }
     }
 }
