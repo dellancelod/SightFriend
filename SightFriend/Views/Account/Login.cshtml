@@ -18,8 +18,10 @@
                 </div>
             </div>
             <div class="login-row">
-                <input class="login-button blue rounded" type="submit" value="Увійти" />
-                <div asp-validation-summary="All"></div>
+                <input class="login-column login-button blue rounded" type="submit" value="Увійти" />
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" class="login-column login-button blue rounded" role="link" aria-disabled="true">
+                    Назад
+                </a>
             </div>
         </form>
 </div>
