@@ -53,6 +53,8 @@ builder.Services.AddControllersWithViews(x =>
     x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
 });
 
+builder.Services.AddServerSideBlazor();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,11 +1,13 @@
 ﻿@model LoginViewModel
-<div >
-    <form class="login-form red rounded" asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+
+<div>
+    <form class="login-form animate__animated animate__backInDown" asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
             <div class="login-row">
                 <div class="login-column">
                     <label asp-for="PhoneNumber"></label>
                 </div>
                 <div class="login-column">
+                    <span asp-validation-for="PhoneNumber"></span>
                     <input asp-for="PhoneNumber" id="phone-num-field" />
                 </div>
             </div>
@@ -14,14 +16,15 @@
                     <label asp-for="Password"></label>
                 </div>
                 <div class="login-column">
+                    <span asp-validation-for="Password"></span>
                     <input asp-for="Password"/>
                 </div>
             </div>
             <div class="login-row">
-                <input class="login-column login-button blue rounded" type="submit" value="Увійти" />
-                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" class="login-column login-button blue rounded" role="link" aria-disabled="true">
+                <input class="login-column login-button  blue rounded concentrate" type="submit" value="Увійти" />
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" class="login-column login-button blue rounded concentrate" role="link" aria-disabled="true">
                     Назад
                 </a>
             </div>
         </form>
-</div>
+ </div>

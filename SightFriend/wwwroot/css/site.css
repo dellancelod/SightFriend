@@ -107,7 +107,6 @@ body {
     font-size: 60px;
     margin: 0px;
     display: grid;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .login-row {
     display: flex;
@@ -127,13 +126,14 @@ body {
     border: none;
     margin: 1%;
     text-align: center;
+    user-select: text;
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login-button:hover {
-    color: inherit;
+.login-button:hover{
+    color: white;
 }
 
 /*  Animations  */
@@ -153,8 +153,14 @@ body {
 
 @keyframes grid-hover {
 
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
     100% {
-        border: 8px solid rgba(0, 0, 0, 0.7);
+        -webkit-transform: scale3d(1.025, 1.025, 1.025);
+        transform: scale3d(1.025, 1.025, 1.025);
     }
 }
 
