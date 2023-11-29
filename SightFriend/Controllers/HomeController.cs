@@ -15,6 +15,14 @@ namespace SightFriend.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                ViewBag.Cabinet = "Особистий кабінет\n" + HttpContext.User.Identity.Name;
+            }
+            else
+            {
+                ViewBag.Cabinet = "Авторизація";
+            }
             return View();
         }
 

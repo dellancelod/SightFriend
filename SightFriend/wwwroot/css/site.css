@@ -126,9 +126,9 @@ body {
     border: none;
     margin: 1%;
     text-align: center;
+    justify-content: center;
     user-select: text;
     text-decoration: none;
-    display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
