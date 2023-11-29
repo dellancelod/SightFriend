@@ -5,7 +5,7 @@
 <div class="text-center">
     <div class="grid2x2">
         <div class="grid-row">
-            <div id="login" style="cursor: pointer;" class="grid-column rounded concentrate blue" onclick="window.location='/Account/Index';">
+            <div id="login" style="cursor: pointer;" class="animate__animated grid-column rounded concentrate blue" onclick="window.location='/Account/Index';">
                 Особистий кабінет
                 </div>
             <div id="radio" class="grid-column rounded concentrate blue"></div>
@@ -24,21 +24,10 @@
     <script>
         $('#radio').load("/Home/RadioPartial")
 
-        
-
-        var radioElement = document.getElementById('radio'),
-            loginElement = document.getElementById('login'),
-            infoElement = document.getElementById('info'),
-            colorblindElement = document.getElementById('colorblind');
+        var infoElement = document.getElementById('info');
 
         var voice = document.getElementById('voiceover');
 
-        //function playAudio(audio) {
-        //    return new Promise(res => {
-        //        audio.play()
-        //        audio.onended = res
-        //    })
-        //}
 
         infoElement.addEventListener('click', function(){
             voice.src = "/voicelines/extended-info.mp3";
@@ -46,44 +35,6 @@
         });
 
 
-        //radioElement.addEventListener('mouseenter', async function () {
-        //    await playAudio(new Audio("/voicelines/radio.mp3"))
-        //}, false);
 
-
-        //loginElement.addEventListener('mouseenter', async function () {
-        //    await playAudio(new Audio('/voicelines/login.mp3'))
-        //}, false);
-
-        //infoElement.addEventListener('mouseenter', async function () {
-
-        //    await playAudio(new Audio("/voicelines/info.mp3"))
-        //}, false);
-
-        //colorblindElement.addEventListener('mouseenter', async function () {
-
-        //    await playAudio(new Audio("/voicelines/colorblind.mp3"))
-        //}, false);
-
-        //radio.addEventListener('mouseleave', function () {
-        //    console.log('leave')
-        //    voice.pause();
-        //    voice.currentTime = 0;
-        //}, false);
-        //login.addEventListener('mouseleave', function () {
-        //    console.log('leave')
-        //    voice.pause();
-        //    voice.currentTime = 0;
-        //}, false);
-        //info.addEventListener('mouseleave', function () {
-        //    console.log('leave')
-        //    voice.pause();
-        //    voice.currentTime = 0;
-        //}, false);
-        //colorblind.addEventListener('mouseleave', function () {
-        //    console.log('leave')
-        //    voice.pause();
-        //    voice.currentTime = 0;
-        //}, false);
     </script>
 }
