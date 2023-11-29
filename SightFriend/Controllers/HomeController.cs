@@ -29,11 +29,6 @@ namespace SightFriend.Controllers
             return PartialView("_Radio");
         }
 
-        public IActionResult LoginPartial()
-        {
-            return PartialView("_Login");
-        }
-
         public IActionResult InfoPartial()
         {
             return PartialView("_Info");
