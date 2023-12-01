@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SightFriend.Data;
 using SightFriend.Models;
 using System.Diagnostics;
 
@@ -6,11 +7,13 @@ namespace SightFriend.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DataManager dataManager;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DataManager dataManager)
         {
             _logger = logger;
+            this.dataManager = dataManager;
         }
 
         public IActionResult Index()
@@ -23,6 +26,7 @@ namespace SightFriend.Controllers
             {
                 ViewBag.Cabinet = "Авторизація";
             }
+            ViewBag.MediaText = dataManager.TextFields.GetTextFieldByCodeWord("PageMedia").Title;
             return View();
         }
 

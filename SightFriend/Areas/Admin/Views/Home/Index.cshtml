@@ -1,20 +1,25 @@
-﻿@model IQueryable<NewsItem>
+﻿@using SightFriend.Data
+@model DataManager
 @{
     string strTitle = "Панель Адміністратора";
     ViewBag.Title = strTitle;
+    IQueryable<NewsItem> newsItems = Model.NewsItems.GetNewsItems();
 }
 
 <div>
     <h1>@strTitle</h1>
+    <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="">
+        На головну
+    </a>
     <div>
         <h3>Новини</h3>
         <div>
             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="">додати новину</a>
             <div>
-            @if (Model.Any())
+            @if (newsItems.Any())
             {
                 <div>
-                    @foreach (NewsItem entity in Model)
+                        @foreach (NewsItem entity in newsItems.OrderByDescending(x => x.DateAdded))
                     {
                         <div>
                             <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
@@ -30,6 +35,12 @@
                 </div>
             }
             </div>
+        </div>
+        <div>
+            <h3>Редагувати сторінки сайту</h3>
+            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageMedia">@ViewBag.MediaText</a>
+            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageNews">@ViewBag.NewsText</a>
+            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageBooks">@ViewBag.BooksText</a>
         </div>
         <div>
             <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">

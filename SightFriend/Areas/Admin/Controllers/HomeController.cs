@@ -14,6 +14,9 @@ namespace SightFriend.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
+            ViewBag.MediaText = dataManager.TextFields.GetTextFieldByCodeWord("PageMedia").Title;
+            ViewBag.NewsText = dataManager.TextFields.GetTextFieldByCodeWord("PageNews").Title;
+            ViewBag.BooksText = dataManager.TextFields.GetTextFieldByCodeWord("PageBooks").Title;
             return View(dataManager);
         }
     }
