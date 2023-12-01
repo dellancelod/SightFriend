@@ -8,6 +8,6 @@ namespace SightFriend.Models
         [Required]
         public virtual Guid Id { get; set; }
         [DataType(DataType.Time)]
-        public virtual DateTime DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

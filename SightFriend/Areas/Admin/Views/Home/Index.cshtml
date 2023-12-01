@@ -1,4 +1,4 @@
-﻿@model IQueryable<News>
+﻿@model IQueryable<NewsItem>
 @{
     string strTitle = "Панель Адміністратора";
     ViewBag.Title = strTitle;
@@ -14,7 +14,7 @@
             @if (Model.Any())
             {
                 <div>
-                    @foreach (News entity in Model)
+                    @foreach (NewsItem entity in Model)
                     {
                         <div>
                             <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">

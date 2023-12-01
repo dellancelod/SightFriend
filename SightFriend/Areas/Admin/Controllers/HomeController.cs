@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SightFriend.Data.Repo;
+using SightFriend.Data;
 
 namespace SightFriend.Areas.Admin.Controllers
 {
@@ -14,7 +14,7 @@ namespace SightFriend.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
-            return View(dataManager.NewsItems.GetNews());
+            return View(dataManager);
         }
     }
 }

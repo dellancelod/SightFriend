@@ -1,41 +1,43 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SightFriend.Data;
 using SightFriend.Models;
 
-namespace SightFriend.Areas.Admin.Controllers
+namespace SightFriend.Controllers
 {
     [Area("Admin")]
     public class NewsItemsController : Controller
     {
         private readonly DataManager dataManager;
-        public NewsItemsController(DataManager dataManager)
+        private readonly IWebHostEnvironment hostEnvironment;
+        public NewsItemsController(DataManager dataManager, IWebHostEnvironment hostEnvironment)
         {
             this.dataManager = dataManager;
+            this.hostEnvironment = hostEnvironment;
         }
 
-        //One view for Adding and Editing
         public IActionResult Edit(Guid id)
         {
-            var entity = id == default ? new NewsItem() : dataManager.NewsItems.GetNewsItemById(id);
+            NewsItem entity = id == default ? new NewsItem() : dataManager.NewsItems.GetNewsItemById(id);
             return View(entity);
         }
+
         [HttpPost]
-        public IActionResult Edit(NewsItem model)
+        public IActionResult Edit(NewsItem model, IFormFile titleImageFile)
         {
             if (ModelState.IsValid)
             {
                 dataManager.NewsItems.SaveNewsItem(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace("Controller", string.Empty));
             }
-
             return View(model);
         }
+
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
             dataManager.NewsItems.DeleteNewsItem(id);
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace("Controller", string.Empty));
         }
+
     }
 }

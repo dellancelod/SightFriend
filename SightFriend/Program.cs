@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SightFriend.Data;
-using SightFriend.Data.Repo;
+using SightFriend.Data.Repo.EntityFramework;
+using SightFriend.Data.Repo.Interfaces;
 using SightFriend.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Add services
-builder.Services.AddTransient<INewsItemsRepository, EFNewsItemRepository>();
+builder.Services.AddTransient<ITextFieldsRepository, EFTExtFieldsRepository>();
+builder.Services.AddTransient<INewsItemsRepository, EFNewsItemsRepository>();
 builder.Services.AddTransient<DataManager>();
 
 //Connect BD context
@@ -52,8 +54,6 @@ builder.Services.AddControllersWithViews(x =>
 {
     x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
 });
-
-builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
