@@ -1,3 +1,5 @@
+
+
 html {
     font-size: 14px;
 }
@@ -36,6 +38,18 @@ body {
 
 
 /*  Main Grid   */
+.grid2x2 {
+    position: absolute;
+    top: 1%;
+    bottom: 1%;
+    right: 1%;
+    left: 1%;
+    font-size: 60px;
+    margin-bottom: 0px;
+    margin: 0px;
+    display: grid;
+}
+
 .grid-row{
     display:flex;
     grid-column-gap: 1%;
@@ -51,21 +65,10 @@ body {
 }
 
 .concentrate:hover {
-    animation:grid-hover 0.3s forwards
+    animation-name: grid-hover;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 }
-
-.grid2x2 {
-    position:absolute;
-    top: 1%;
-    bottom:1%;
-    right:1%;
-    left:1%;
-    font-size: 60px;
-    margin-bottom: 0px;
-    margin:0px;
-    display: grid;
-}
-
 
 /*  Radio Button  */
 
@@ -137,6 +140,20 @@ body {
 }
 
 /*  Animations  */
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 2;
+    }
+}
+
 @keyframes blink {
     0% {
         background-color: #939cc0;
@@ -161,6 +178,20 @@ body {
     100% {
         -webkit-transform: scale3d(1.025, 1.025, 1.025);
         transform: scale3d(1.025, 1.025, 1.025);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 2;
     }
 }
 
