@@ -29,6 +29,10 @@
                 <textarea asp-for="Text"></textarea>
                 <span asp-validation-for="Text"></span>
             </div>
+            <div>
+                <label asp-for="Hidden"></label>
+                <input asp-for="Hidden" type="checkbox"/>
+            </div>
             <input type="submit" value="Зберегти"/>
         </form>
     </div>

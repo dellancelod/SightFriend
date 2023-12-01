@@ -4,7 +4,6 @@ using SightFriend.Models;
 
 namespace SightFriend.Controllers
 {
-    [Area("Admin")]
     public class NewsItemsController : Controller
     {
         private readonly DataManager dataManager;
@@ -14,30 +13,15 @@ namespace SightFriend.Controllers
             this.dataManager = dataManager;
             this.hostEnvironment = hostEnvironment;
         }
-
-        public IActionResult Edit(Guid id)
+        public IActionResult Index(Guid id)
         {
-            NewsItem entity = id == default ? new NewsItem() : dataManager.NewsItems.GetNewsItemById(id);
-            return View(entity);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(NewsItem model, IFormFile titleImageFile)
-        {
-            if (ModelState.IsValid)
+            if (id != default)
             {
-                dataManager.NewsItems.SaveNewsItem(model);
-                return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace("Controller", string.Empty));
+                return View("Show", dataManager.NewsItems.GetNewsItemById(id));
             }
-            return View(model);
-        }
 
-        [HttpPost]
-        public IActionResult Delete(Guid id)
-        {
-            dataManager.NewsItems.DeleteNewsItem(id);
-            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace("Controller", string.Empty));
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageNews");
+            return View(dataManager.NewsItems.GetNewsItems());
         }
-
     }
 }

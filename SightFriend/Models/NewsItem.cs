@@ -12,6 +12,6 @@ namespace SightFriend.Models
         public string Subtitle { get; set; }
         [Display(Name = "Зміст")]
         public string Text { get; set; } = "Вміст заповнюється адміністратором";
-
+        public bool Hidden { get; set; }
     }
 }

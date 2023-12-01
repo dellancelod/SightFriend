@@ -1,0 +1,27 @@
+﻿@model IQueryable<NewsItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+}
+<a class="suggest-news-button" asp-area="" asp-controller="NewsItems" asp-action="Suggest">Додати новину</a>
+<div>
+    @if (Model.Any())
+    {
+        <ul class="news-image-list">
+            @foreach (NewsItem entity in Model.OrderByDescending(x => x.DateAdded))
+            {
+                if(entity.Hidden == false){
+                <li>
+                    <a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id">
+                            <h4>@($"{entity.Title} {@entity.DateAdded.Date}")</h4>
+                    </a>
+                </li>
+                }
+            }
+        </ul>
+    }
+
+    <button onclick="window.location='/Media/Index';">
+        Назад
+    </button>
+</div>

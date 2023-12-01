@@ -1,0 +1,16 @@
+﻿@model NewsItem
+
+<div>
+    <h1>
+        @Model.Title
+    </h1>
+    <h2>
+        @Model.Subtitle
+    </h2>
+</div>
+<div>
+    @Html.Raw(Model.Text)
+</div>
+<button onclick="window.location='/NewsItems/Index';">
+    Назад
+</button>
