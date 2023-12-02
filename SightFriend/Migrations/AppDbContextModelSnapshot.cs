@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SightFriend.Data;
 
@@ -16,31 +17,34 @@ namespace SightFriend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "6.0.25")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
 
@@ -48,14 +52,14 @@ namespace SightFriend.Migrations
                         new
                         {
                             Id = "0",
-                            ConcurrencyStamp = "e418a71c-8b7b-449d-a2a4-cc17bf384da5",
+                            ConcurrencyStamp = "0ca89755-f085-422e-ad3a-a3e5d0acb242",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "87b62e54-c5ed-4cdb-bc66-f6c08e7a4558",
+                            ConcurrencyStamp = "301dbdee-4a29-4775-a671-a3e95269ef2d",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -67,15 +71,17 @@ namespace SightFriend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -87,54 +93,54 @@ namespace SightFriend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
@@ -143,7 +149,8 @@ namespace SightFriend.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
 
@@ -152,11 +159,11 @@ namespace SightFriend.Migrations
                         {
                             Id = "b167495c-7b90-4b05-8dc8-256823348341",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "74510224-e314-40f1-b651-69d6ea5b55da",
+                            ConcurrencyStamp = "f1793688-8a2c-4dc9-bd40-19269df55f90",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHlctO2Uw0FS+3TiJJVsul7ums2fvEdphCwjDia+3uYCWSsGjmfnuMBGYW/48MhlNQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBUSHpBWymKZBZQhDILmma0SPORleT8p8CuZrfezjP4+2aSlXISXQUsgyBHtBAnz1w==",
                             PhoneNumber = "555",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -167,11 +174,11 @@ namespace SightFriend.Migrations
                         {
                             Id = "b9dacebc-402e-48df-8d60-dae005eece05",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "222d2f12-c645-4f2e-93d8-5e8d98eb39fe",
+                            ConcurrencyStamp = "a8632c81-fb1d-4980-97e0-c6b481ee257b",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ДАНІЛ СВІТАЙЛО",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDSTOCvRHyG/Gswz2T41w/kiqNIFwGEapg6q1poXCWkA30xu9RX3f45Pa6ibym/wWQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMnu/3/DnVvxOSjMegnYPAGB05OGhj0WFYiL4FYT17k3sRZEsA0m42ow6CS/8+dTJQ==",
                             PhoneNumber = "0955880395",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -186,15 +193,17 @@ namespace SightFriend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -206,17 +215,17 @@ namespace SightFriend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -228,10 +237,10 @@ namespace SightFriend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -255,16 +264,16 @@ namespace SightFriend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -275,25 +284,25 @@ namespace SightFriend.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Hidden")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Subtitle")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -304,22 +313,22 @@ namespace SightFriend.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CodeWord")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -330,7 +339,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("b488f7aa-9ebf-4ee5-9e4b-fc22f0de4e1d"),
                             CodeWord = "PageNews",
-                            DateAdded = new DateTime(2023, 12, 1, 16, 1, 33, 777, DateTimeKind.Utc).AddTicks(8497),
+                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2325),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Новини"
                         },
@@ -338,7 +347,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("b6de0903-3ba8-44b2-a5d9-f03d315098be"),
                             CodeWord = "PageBooks",
-                            DateAdded = new DateTime(2023, 12, 1, 16, 1, 33, 777, DateTimeKind.Utc).AddTicks(8553),
+                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2381),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Аудіо-книги"
                         },
@@ -346,7 +355,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("673c93b2-866d-4885-bca2-3f66f184dff5"),
                             CodeWord = "PageMedia",
-                            DateAdded = new DateTime(2023, 12, 1, 16, 1, 33, 777, DateTimeKind.Utc).AddTicks(8576),
+                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2408),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Медіа"
                         });
