@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,6 +6,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <!--Debug/Elease logic-->
+  <Choose>
+    <When Condition="'$(Configuration)' == 'Debug'">
+      <ItemGroup>
+        <None Include="appsettings.json" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+        <!--<None Include="appsettings.prod.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />-->
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)' == 'Release'">
+      <ItemGroup>
+        <None Include="appsettings.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <!--<None Include="appsettings.prod.json" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />-->
+      </ItemGroup>
+    </When>
+  </Choose>
+  
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
   </ItemGroup>
@@ -15,21 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorAnimate" Version="3.0.0" />
     <PackageReference Include="jQuery.UI.Combined" Version="1.13.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,12 +14,17 @@ builder.Services.AddTransient<INewsItemsRepository, EFNewsItemsRepository>();
 builder.Services.AddTransient<DataManager>();
 
 //Connect BD context
-builder.Services.AddDbContextPool<AppDbContext>(options => options
-        .UseMySql(
-            builder.Configuration.GetConnectionString("MariaDbConnectionString"),
-            new MariaDbServerVersion(new Version(10, 5, 4))
+builder.Services.AddDbContext<AppDbContext>(options => options
+        .UseSqlServer(
+            builder.Configuration.GetConnectionString("MSSQLConnectionString")
         )
     );
+//builder.Services.AddDbContextPool<AppDbContext>(options => options
+//        .UseMySql(
+//            builder.Configuration.GetConnectionString("MariaDbConnectionString"),
+//            new MariaDbServerVersion(new Version(10, 5, 4))
+//        )
+//    );
 
 //Configure Identity system
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
