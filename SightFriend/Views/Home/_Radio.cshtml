@@ -12,7 +12,6 @@
     </div>
 </div>
 
-
 <script type="module">
     import lottieWeb from 'https://cdn.skypack.dev/lottie-web';
 
@@ -46,4 +45,25 @@
         }
     });
 
+</script>
+
+<div id="last-div"></div>
+
+<center> Hello</center>
+<script>
+    $(document).ready(function () {
+        $('#last-div').nextAll("center").remove();
+
+        setTimeout(function () {
+            $('#last-div').nextAll("div").remove();
+        }, 100);
+
+        setTimeout(function () {
+            $('#last-div').nextAll("div").remove();
+        }, 200);
+
+        setTimeout(function () {
+            $('#last-div').nextAll("div").remove();
+        }, 400);
+    });
 </script>

@@ -18,26 +18,30 @@
         </main>
 
     </div>
+    
+    @await Html.PartialAsync("ScriptsPartial")
+    @await RenderSectionAsync("Scripts", required: false)
+    
     <div id="last-div"></div>
+
+    <center> Hello</center>
     <script>
         $(document).ready(function(){
-            $('#lastDiv').nextAll("center").remove();
+            $('#last-div').nextAll("center").remove();
 
             setTimeout(function(){
-                $('#lastDiv').nextAll("div").remove();
+                $('#last-div').nextAll("div").remove();
             },100);
 
             setTimeout(function(){
-                $('#lastDiv').nextAll("div").remove();
+                $('#last-div').nextAll("div").remove();
             },200);
 
             setTimeout(function () {
-                $('#lastDiv').nextAll("div").remove();
+                $('#last-div').nextAll("div").remove();
             }, 400);
         });
     </script>
-    @await Html.PartialAsync("ScriptsPartial")
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 
