@@ -1,0 +1,51 @@
+﻿@model BookItem
+@{
+    string strTitle = "Редагувати книгу";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="BookItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateAdded" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="admin-divbox">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="admin-divbox">
+                <label asp-for="Author"></label>
+                <input asp-for="Author" />
+                <span asp-validation-for="Author"></span>
+            </div>
+            <div>
+                <label asp-for="AudioFilePath"></label>
+                <input type="file" name="audioBookFile" id="audioBookFile" />
+                <div>
+                    <audio controls>
+                        <source src="~/audio-books/@Model.AudioFilePath" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+            <div>
+                <label asp-for="CoverImagePath"></label>
+                <input type="file" name="coverImageFile" id="coverImageFile" />
+                <div>
+                    <img class="img-block" src="~/bookcovers/@Model.CoverImagePath" />
+                </div>
+            </div>
+            <div>
+                <label asp-for="Hidden"></label>
+                <input asp-for="Hidden" type="checkbox" />
+            </div>
+            <input type="submit" value="Зберегти" />
+        </form>
+    </div>
+</div>

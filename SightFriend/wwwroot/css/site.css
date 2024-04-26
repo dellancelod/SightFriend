@@ -228,3 +228,20 @@ body {
 .admin-divbox a{
     display: block;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1%;
+    margin: 0 auto;
+}
+
+.grid-item {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: white;
+    background-color: #273a82;
+}

@@ -52,14 +52,14 @@ namespace SightFriend.Migrations
                         new
                         {
                             Id = "0",
-                            ConcurrencyStamp = "0ca89755-f085-422e-ad3a-a3e5d0acb242",
+                            ConcurrencyStamp = "285d6789-7c64-4e16-96be-964f159a15b7",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "301dbdee-4a29-4775-a671-a3e95269ef2d",
+                            ConcurrencyStamp = "c7cd6dcb-bb97-458c-b757-d3adefb1a874",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -159,11 +159,11 @@ namespace SightFriend.Migrations
                         {
                             Id = "b167495c-7b90-4b05-8dc8-256823348341",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f1793688-8a2c-4dc9-bd40-19269df55f90",
+                            ConcurrencyStamp = "77a2c5d2-2300-4698-8a5a-178cd17d854e",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBUSHpBWymKZBZQhDILmma0SPORleT8p8CuZrfezjP4+2aSlXISXQUsgyBHtBAnz1w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC4omz4KkSpCbgflDrhF2qZZH5IonDuSkkGCvT7KNkQmX8pIqChnTbtgSP5MD1tV7g==",
                             PhoneNumber = "555",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -174,11 +174,11 @@ namespace SightFriend.Migrations
                         {
                             Id = "b9dacebc-402e-48df-8d60-dae005eece05",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8632c81-fb1d-4980-97e0-c6b481ee257b",
+                            ConcurrencyStamp = "1f3a8115-ebce-4968-99b9-7d88ec9c1a52",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ДАНІЛ СВІТАЙЛО",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMnu/3/DnVvxOSjMegnYPAGB05OGhj0WFYiL4FYT17k3sRZEsA0m42ow6CS/8+dTJQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFRy4pZNBxACJ0tUeV3pz9Y4uMr0hrZDjfJgeOvtHn5jPhhB6uZA/syBbEnipvbUmQ==",
                             PhoneNumber = "0955880395",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -280,6 +280,43 @@ namespace SightFriend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SightFriend.Models.BookItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AudioFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Length")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookItems");
+                });
+
             modelBuilder.Entity("SightFriend.Models.NewsItem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -339,7 +376,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("b488f7aa-9ebf-4ee5-9e4b-fc22f0de4e1d"),
                             CodeWord = "PageNews",
-                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2325),
+                            DateAdded = new DateTime(2024, 4, 26, 9, 23, 8, 463, DateTimeKind.Utc).AddTicks(7058),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Новини"
                         },
@@ -347,7 +384,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("b6de0903-3ba8-44b2-a5d9-f03d315098be"),
                             CodeWord = "PageBooks",
-                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2381),
+                            DateAdded = new DateTime(2024, 4, 26, 9, 23, 8, 463, DateTimeKind.Utc).AddTicks(7091),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Аудіо-книги"
                         },
@@ -355,7 +392,7 @@ namespace SightFriend.Migrations
                         {
                             Id = new Guid("673c93b2-866d-4885-bca2-3f66f184dff5"),
                             CodeWord = "PageMedia",
-                            DateAdded = new DateTime(2023, 12, 2, 9, 30, 7, 35, DateTimeKind.Utc).AddTicks(2408),
+                            DateAdded = new DateTime(2024, 4, 26, 9, 23, 8, 463, DateTimeKind.Utc).AddTicks(7112),
                             Text = "Вміст заповнюється адміністратором",
                             Title = "Медіа"
                         });

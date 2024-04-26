@@ -4,6 +4,7 @@
     string strTitle = "Панель Адміністратора";
     ViewBag.Title = strTitle;
     IQueryable<NewsItem> newsItems = Model.NewsItems.GetNewsItems();
+    IQueryable<BookItem> bookItems = Model.BooksItems.GetBookItems();
 }
 
 <div>
@@ -22,7 +23,7 @@
                         @foreach (NewsItem entity in newsItems.OrderByDescending(x => x.DateAdded))
                     {
                         <div>
-                            <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
+                            <a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id">
                                 @($"{entity.Title}")
                             </a>
                             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
@@ -36,6 +37,32 @@
             }
             </div>
         </div>
+
+        <h3>Аудіо-Книги</h3>
+        <div>
+            <a asp-area="Admin" asp-controller="BookItems" asp-action="Edit" asp-route-id="">додати книгу</a>
+            <div>
+                @if (bookItems.Any())
+                {
+                    <div>
+                        @foreach (BookItem entity in bookItems.OrderByDescending(x => x.DateAdded))
+                        {
+                            <div>
+                                <a asp-area="" asp-controller="BooksItems" asp-action="Index" asp-route-id="@entity.Id">
+                                    @($"{entity.Title}")
+                                </a>
+                                <a asp-area="Admin" asp-controller="BookItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
+                                <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="BookItems" asp-action="Delete">
+                                    <input type="hidden" name="id" value="@entity.Id">
+                                    <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">видалити</a>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
         <div>
             <h3>Редагувати сторінки сайту</h3>
             <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageMedia">@ViewBag.MediaText</a>

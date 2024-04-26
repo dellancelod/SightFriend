@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Add services
 builder.Services.AddTransient<ITextFieldsRepository, EFTExtFieldsRepository>();
 builder.Services.AddTransient<INewsItemsRepository, EFNewsItemsRepository>();
+builder.Services.AddTransient<IBooksItemsRepository, EFBooksItemsRepository>();
 builder.Services.AddTransient<DataManager>();
 
 //Connect BD context
