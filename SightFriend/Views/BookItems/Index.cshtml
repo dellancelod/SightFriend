@@ -1,9 +1,9 @@
 ﻿@model IQueryable<BookItem>
 <div class="text-center">
-    <div class="animate__animated animate__backInDown grid-books">
+    <div id="booksContainer" class="animate__animated animate__backInDown grid-books">
         @if (Model.Any())
         {
-            @foreach (BookItem entity in Model.OrderByDescending(x => x.DateAdded).Take(3))
+            @foreach (BookItem entity in Model)
             {
                 if (entity.Hidden == false)
                 {
@@ -25,3 +25,39 @@
         Назад
     </div>
 </div>
+
+<script>
+    var page = 1;
+    var loading = false;
+
+    function loadMoreBooks() {
+        if (!loading) {
+            loading = true;
+            $.ajax({
+                url: '@Url.Action("Index", "BooksItems")',
+                type: 'GET',
+                data: { page: page + 1 },
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#booksContainer').append(data);
+                        page++;
+                    } else {
+                        $(window).off('scroll'); // No more items to load
+                    }
+                },
+                complete: function () {
+                    loading = false;
+                }
+            });
+        }
+    }
+
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            loadMoreBooks();
+        }
+    });
+
+    // Load more books initially
+    loadMoreBooks();
+</script>
