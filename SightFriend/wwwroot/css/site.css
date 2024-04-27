@@ -55,7 +55,7 @@ body {
     grid-column-gap: 1%;
 }
 
-.grid-column {
+.grid-column{
     display: flex;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     justify-content: center;
@@ -229,19 +229,45 @@ body {
     display: block;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 1%;
-    margin: 0 auto;
+/* AudioBook list */
+.grid-column {
+    position: relative;
+    overflow: hidden; /* Ensure the overflow is hidden to prevent blurred content from overflowing */
 }
 
-.grid-item {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-    color: white;
-    background-color: #273a82;
+.book-cover {
+    position: relative;
+    background-size: cover; /* Cover the entire area with the background image */
+    background-position: center; /* Center the background image */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+    .text-overlay h4 {
+        margin-bottom: 5px;
+    }
+
+    .text-overlay p {
+        margin: 0;
+    }
+
+/* Apply blur effect */
+.book-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(10px); /* Adjust blur strength as needed */
 }

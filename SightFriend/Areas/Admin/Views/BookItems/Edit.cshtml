@@ -27,19 +27,25 @@
             <div>
                 <label asp-for="AudioFilePath"></label>
                 <input type="file" name="audioBookFile" id="audioBookFile" />
-                <div>
-                    <audio controls>
-                        <source src="~/audio-books/@Model.AudioFilePath" type="audio/mp3">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
+                @if (!string.IsNullOrEmpty(Model.AudioFilePath))
+                {
+                    <div>
+                        <audio controls>
+                            <source src="~/audio-books/@Model.AudioFilePath" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                }
             </div>
             <div>
                 <label asp-for="CoverImagePath"></label>
                 <input type="file" name="coverImageFile" id="coverImageFile" />
-                <div>
-                    <img class="img-block" src="~/bookcovers/@Model.CoverImagePath" />
-                </div>
+                @if (!string.IsNullOrEmpty(Model.CoverImagePath))
+                {
+                    <div>
+                        <img class="img-block" src="~/bookcovers/@Model.CoverImagePath" />
+                    </div>
+                }
             </div>
             <div>
                 <label asp-for="Hidden"></label>

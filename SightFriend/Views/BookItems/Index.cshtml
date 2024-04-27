@@ -1,0 +1,49 @@
+﻿@model IQueryable<BookItem>
+<div class="text-center">
+    <div class="animate__animated animate__backInDown grid2x2">
+        <div class="grid-row">
+            @if (Model.Any())
+            {
+                @foreach (BookItem entity in Model.OrderByDescending(x => x.DateAdded).Take(3))
+                {
+                    if (entity.Hidden == false)
+                    {
+
+                        <a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id" class="grid-column rounded concentrate blue book-cover" style="background-image: url('@Url.Content("~/bookcovers/" + entity.CoverImagePath)');">
+                            <div class="book-cover">
+                                <div class="text-overlay blue">
+                                    <p>@entity.Title</p>
+                                    <h4>@entity.Author</h4>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            }
+        </div>
+        <div class="grid-row">
+            @if (Model.Any())
+            {
+                @foreach (BookItem entity in Model.OrderByDescending(x => x.DateAdded).Skip(3).Take(2))
+                {
+                    if (entity.Hidden == false)
+                    {
+
+                        <a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id" class="grid-column rounded concentrate blue book-cover" style="background-image: url('@Url.Content("~/bookcovers/" + entity.CoverImagePath)');">
+                            <div class="book-cover">
+                                <div class="text-overlay blue">
+                                    <p>@entity.Title</p>
+                                    <h4>@entity.Author</h4>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            }
+            <div id="news" style="cursor: pointer;" class="grid-column rounded concentrate blue" onclick="window.location='/Home/Index';">
+                Назад
+            </div>
+        </div>
+    </div>
+
+</div>

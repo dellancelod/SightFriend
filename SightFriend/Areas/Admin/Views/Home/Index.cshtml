@@ -49,7 +49,7 @@
                         {
                             <div>
                                 <a asp-area="" asp-controller="BooksItems" asp-action="Index" asp-route-id="@entity.Id">
-                                    @($"{entity.Title}")
+                                    @($"{entity.Title} {entity.Author}")
                                 </a>
                                 <a asp-area="Admin" asp-controller="BookItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
                                 <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="BookItems" asp-action="Delete">

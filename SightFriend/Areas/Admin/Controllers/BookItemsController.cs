@@ -24,12 +24,19 @@ namespace SightFriend.Areas.Admin.Controllers
             return View(entity);
         }
         [HttpPost]
+        [RequestSizeLimit(512 * 1024 * 1024)]
         public IActionResult Edit(BookItem model, IFormFile audioBookFile, IFormFile coverImageFile)
         {
             if (ModelState.IsValid)
             {
                 if (audioBookFile != null)
                 {
+                    if (audioBookFile.Length > 512 * 1024 * 1024)
+                    {
+                        ModelState.AddModelError("audioBookFile", "Розмір аудіофайлу перевищує 512Мб!");
+                        return View(model);
+                    }
+
                     model.AudioFilePath = audioBookFile.FileName;
                     using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "audio-books/", audioBookFile.FileName), FileMode.Create))
                     {
@@ -39,6 +46,12 @@ namespace SightFriend.Areas.Admin.Controllers
 
                 if (coverImageFile != null)
                 {
+                    if (coverImageFile.Length > 512 * 1024 * 1024)
+                    {
+                        ModelState.AddModelError("audioBookFile", "Розмір обкладинки перевищує 512Мб!");
+                        return View(model);
+                    }
+
                     model.CoverImagePath = coverImageFile.FileName;
                     using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "bookcovers/", coverImageFile.FileName), FileMode.Create))
                     {
@@ -58,5 +71,7 @@ namespace SightFriend.Areas.Admin.Controllers
             dataManager.BooksItems.DeleteBookItem(id);
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace("Controller", string.Empty));
         }
+
+
     }
 }
