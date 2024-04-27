@@ -363,3 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 SightFriend/Data/AppDbContext.cs
+
+SightFriend/wwwroot/audio-books
+SightFriend/wwwroot/bookcovers
+
