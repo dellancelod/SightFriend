@@ -1,0 +1,21 @@
+﻿@model BookItem
+
+<div>
+    <h1>
+        @Model.Title - @Model.Author
+    </h1>
+
+    <div id="player"></div>
+
+</div>
+
+<div id="back" style="cursor: pointer; position: absolute; bottom: 20px; right: 20px;" class="rounded-circle concentrate blue" onclick="window.location='/BookItems/Index';">
+    Назад
+</div>
+
+<script>
+    var audioFileName = "@Html.Raw(Model.AudioFilePath)";
+    var audioFilePath = "/audio-books/" + audioFileName; // Adjust the path as per your folder structure
+
+    var player = new Playerjs({ id: "player", file: audioFilePath });
+</script>

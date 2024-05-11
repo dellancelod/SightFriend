@@ -8,7 +8,7 @@
                 if (entity.Hidden == false)
                 {
 
-                    <a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id" class="book-item rounded concentrate blue book-cover" style="background-image: url('@Url.Content("~/bookcovers/" + entity.CoverImagePath)');">
+                    <a asp-area="" asp-controller="BookItems" asp-action="Index" asp-route-id="@entity.Id" class="book-item rounded concentrate blue book-cover" style="background-image: url('@Url.Content("~/bookcovers/" + entity.CoverImagePath)');">
                         <div class="book-cover">
                             <div class="text-overlay blue">
                                 <p>@entity.Title</p>

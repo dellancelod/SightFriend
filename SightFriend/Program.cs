@@ -18,7 +18,7 @@ builder.Services.AddTransient<DataManager>();
 //Connect BD context
 builder.Services.AddDbContext<AppDbContext>(options => options
         .UseSqlServer(
-            builder.Configuration.GetConnectionString("SomeeComConnectionString")
+            builder.Configuration.GetConnectionString("MSSQLConnectionString")
         )
     );
 //builder.Services.AddDbContextPool<AppDbContext>(options => options

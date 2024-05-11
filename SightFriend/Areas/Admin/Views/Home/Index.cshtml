@@ -48,7 +48,7 @@
                         @foreach (BookItem entity in bookItems.OrderByDescending(x => x.DateAdded))
                         {
                             <div>
-                                <a asp-area="" asp-controller="BooksItems" asp-action="Index" asp-route-id="@entity.Id">
+                                <a asp-area="" asp-controller="BookItems" asp-action="Index" asp-route-id="@entity.Id">
                                     @($"{entity.Title} {entity.Author}")
                                 </a>
                                 <a asp-area="Admin" asp-controller="BookItems" asp-action="Edit" asp-route-id="@entity.Id">редагувати</a>
