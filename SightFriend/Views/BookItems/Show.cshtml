@@ -5,6 +5,36 @@
         @Model.Title - @Model.Author
     </h1>
 
+    <div class="login-row controls-book">
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Пуск" aria-label="Пуск" onclick="player.api('play')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Пауза" aria-label="Пауза" onclick="player.api('pause')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Тихше" aria-label="Тихше" onclick="player.api('volume','-0.1')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Гучніше" aria-label="Гучніше" onclick="player.api('volume','+0.1')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="-10 секунд" aria-label="-10 секунд" onclick="player.api('seek','-10')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="+10 секунд" aria-label="+10 секунд" onclick="player.api('seek','+10')" />
+    </div>
+
+    <div class="login-row controls-book">
+        <h2>
+            Перемотка:
+        </h2>
+        <input id="pjs_seek_hour" class="login-column login-button blue rounded concentrate" type="number" value="0" aria-label="Години" /> :
+        <input id="pjs_seek_minute" class="login-column login-button blue rounded concentrate" type="number" value="0" aria-label="Хвилини" /> :
+        <input id="pjs_seek_second" class="login-column login-button blue rounded concentrate" type="number" value="0" aria-label="Секунди" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Перемотати" aria-label="Перемотати" onclick="player.api('seek',document.getElementById('pjs_seek_hour').value*3600 + document.getElementById('pjs_seek_minute').value*60 + document.getElementById('pjs_seek_second').value)" />
+    </div>
+    
+    <div class="login-row controls-book">
+        <h2>
+            Швидкість
+        </h2>
+        <input type="button" class="login-column login-button blue rounded concentrate" value="0.5" aria-label="0.5" onclick="player.api('speed','0.5')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="Нормальна" aria-label="Нормальна" onclick="player.api('speed','1.0')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="1.25" aria-label="1.25" onclick="player.api('speed','1.25')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="1.5" aria-label="1.5" onclick="player.api('speed','1.5')" />
+        <input type="button" class="login-column login-button blue rounded concentrate" value="2" aria-label="2" onclick="player.api('speed','2.0')" />
+    </div>
+
     <div id="player"></div>
 
 </div>

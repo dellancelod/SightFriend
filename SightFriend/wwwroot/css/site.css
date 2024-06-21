@@ -301,3 +301,12 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     aspect-ratio: 1 / 1; /* Set aspect ratio to 1:1 for a perfect circle */
 }
+
+
+/* Audio-Book page */
+.controls-book {
+    font-size:40px
+}
+.controls-book input[type=number]{
+    width: 3ch;
+}
