@@ -16,17 +16,17 @@ builder.Services.AddTransient<IBooksItemsRepository, EFBooksItemsRepository>();
 builder.Services.AddTransient<DataManager>();
 
 //Connect BD context
-builder.Services.AddDbContext<AppDbContext>(options => options
-        .UseSqlServer(
-            builder.Configuration.GetConnectionString("MSSQLConnectionString")
-        )
-    );
-//builder.Services.AddDbContextPool<AppDbContext>(options => options
-//        .UseMySql(
-//            builder.Configuration.GetConnectionString("MariaDbConnectionString"),
-//            new MariaDbServerVersion(new Version(10, 5, 4))
+//builder.Services.AddDbContext<AppDbContext>(options => options
+//        .UseSqlServer(
+//            builder.Configuration.GetConnectionString("MSSQLConnectionString")
 //        )
 //    );
+builder.Services.AddDbContextPool<AppDbContext>(options => options
+        .UseMySql(
+            builder.Configuration.GetConnectionString("MariaDbConnectionString"),
+            new MariaDbServerVersion(new Version(10, 5, 4))
+        )
+    );
 
 //Configure Identity system
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -65,6 +65,14 @@ builder.Services.AddControllersWithViews(x =>
 builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = 512 * 1024 * 1024;
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.User.AllowedUserNameCharacters =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ àáâã´äåºæçè³¿éêëìíîïğñòóôõö÷øùüşÿÀÁÂÃ¥ÄÅªÆÇÈ²¯ÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÜŞß";
+
+    options.User.RequireUniqueEmail = false;
 });
 
 var app = builder.Build();

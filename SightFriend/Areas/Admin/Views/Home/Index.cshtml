@@ -13,6 +13,44 @@
         На головну
     </a>
     <div>
+        <h3>Користувачі</h3>
+        <div>
+            <a asp-area="Admin" asp-controller="Users" asp-action="Edit" asp-route-id="">додати користувача</a>
+            <div>
+                @if (ViewBag.Users != null)
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Логін</th>
+                                <th>Телефон</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in ViewBag.Users)
+                            {
+                                if (@user.UserName != "admin")
+                                {
+                                    <tr>
+                                        <td>@user.UserName</td>
+                                        <td>@user.PhoneNumber</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">редагувати</a> |
+                                            <form asp-area="Admin" asp-controller="Users" asp-action="Delete" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <a href="#" onclick="this.closest('form').submit(); return false;">видалити</a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
         <h3>Новини</h3>
         <div>
             <a asp-area="Admin" asp-controller="NewsItems" asp-action="Edit" asp-route-id="">додати новину</a>
@@ -74,5 +112,7 @@
                 <input type="submit" value="Вийти"/>
             </form>
         </div>
+
+        
     </div>
 </div>

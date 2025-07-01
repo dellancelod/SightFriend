@@ -18,6 +18,10 @@ namespace SightFriend.Controllers
         }
         public IActionResult Index(Guid id, int page = 1, int pageSize = 10)
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (id != default)
             {
                 return View("Show", dataManager.BooksItems.GetBookItemById(id));

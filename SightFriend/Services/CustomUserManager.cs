@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SightFriend.Data;
+using System.Text;
 
 namespace SightFriend.Services
 {
@@ -38,5 +39,6 @@ namespace SightFriend.Services
 
             return Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber, cancellationToken);
         }
+
     }
 }

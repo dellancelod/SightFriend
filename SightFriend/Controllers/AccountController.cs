@@ -37,6 +37,12 @@ namespace SightFriend.Controllers
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
                     if (result.Succeeded)
                     {
+                        bool isAdmin = await userManager.IsInRoleAsync(user, "Admin");
+                        if (isAdmin)
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+
                         return Redirect(returnUrl ?? "/");
                     }
                 }
@@ -50,11 +56,22 @@ namespace SightFriend.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
             {
                 return Redirect("Login");
+            }
+            var user = await userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                bool isAdmin = await userManager.IsInRoleAsync(user, "Admin");
+                if (isAdmin)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                ViewBag.Username = user.UserName;
             }
 
             ViewBag.Username = HttpContext.User.Identity.Name;

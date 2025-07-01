@@ -26,26 +26,19 @@
             </div>
             <div>
                 <label asp-for="AudioFilePath"></label>
-                <input type="file" name="audioBookFile" id="audioBookFile" />
-                @if (!string.IsNullOrEmpty(Model.AudioFilePath))
-                {
-                    <div>
-                        <audio controls>
-                            <source src="~/audio-books/@Model.AudioFilePath" type="audio/mp3">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                }
+                <input type="file" name="audioBookFile" id="audioBookFile" accept=".mp3,audio/mpeg" />
+                <div>
+                    <audio id="audioPreview" controls>
+                        <source src="~/audio-books/@Model.AudioFilePath" type="audio/mp3">
+                    </audio>
+                </div>
             </div>
             <div>
                 <label asp-for="CoverImagePath"></label>
-                <input type="file" name="coverImageFile" id="coverImageFile" />
-                @if (!string.IsNullOrEmpty(Model.CoverImagePath))
-                {
-                    <div>
-                        <img class="img-block" src="~/bookcovers/@Model.CoverImagePath" />
-                    </div>
-                }
+                <input type="file" name="coverImageFile" id="coverImageFile" accept=".jpg,.jpeg,.png,.gif,image/*" />
+                <div>
+                    <img id="coverPreview" class="img-block" src="~/bookcovers/@Model.CoverImagePath" />
+                </div>
             </div>
             <div>
                 <label asp-for="Hidden"></label>
@@ -58,3 +51,23 @@
         </a>
     </div>
 </div>
+
+<script>
+    document.getElementById('coverImageFile').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            document.getElementById('coverPreview').src = url;
+        }
+    });
+
+    document.getElementById('audioBookFile').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            const audio = document.getElementById('audioPreview');
+            audio.querySelector('source').src = url;
+            audio.load();
+        }
+    });
+</script>
